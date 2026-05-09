@@ -231,20 +231,20 @@ input:focus,select:focus,textarea:focus{
 }
 
 .choice span{
-  min-height:56px;
+  min-height:52px;
   height:100%;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
   border:1px solid rgba(11,122,22,.22);
-  border-radius:16px;
-  padding:12px;
+  border-radius:15px;
+  padding:10px 11px;
   background:#fff;
   color:var(--text);
   font-weight:800;
   font-size:14px;
-  line-height:1.25;
+  line-height:1.22;
   cursor:pointer;
   transition:.2s ease;
 }
@@ -278,12 +278,13 @@ input:focus,select:focus,textarea:focus{
 .checkbox-item span{
   display:flex;
   align-items:center;
-  min-height:58px;
+  min-height:54px;
   border:1px solid rgba(11,122,22,.22);
-  border-radius:16px;
-  padding:13px 14px;
+  border-radius:15px;
+  padding:12px 14px;
   background:#fff;
   font-weight:750;
+  font-size:14px;
   line-height:1.3;
   cursor:pointer;
   transition:.2s ease;
@@ -425,40 +426,111 @@ button:disabled{opacity:.6;cursor:not-allowed;transform:none;}
       url("./fond-basket.png") center/cover fixed no-repeat;
   }
 
+  .page{padding:18px 10px 34px;}
+
   .hero{
     grid-template-columns:1fr;
     text-align:center;
+    gap:14px;
+    margin-bottom:18px;
   }
 
   .logo-card{
-    width:135px;
+    width:112px;
     margin:0 auto;
+    border-radius:22px;
+    padding:10px;
+  }
+
+  .badge{
+    font-size:12px;
+    padding:7px 11px;
+    margin-bottom:10px;
+  }
+
+  h1{
+    font-size:clamp(30px,10vw,42px);
+    letter-spacing:-1px;
   }
 
   .hero p{
     margin-left:auto;
     margin-right:auto;
-    font-size:16px;
+    font-size:15px;
+    line-height:1.45;
   }
 
-  .form-inner{padding:20px;}
-  .form-grid{grid-template-columns:1fr;}
+  .form-inner{padding:16px;}
+  .form-grid{grid-template-columns:1fr;gap:12px;}
 
   .choice-grid,
   .choice-grid.two,
   .choice-grid.four,
   .choice-grid.five{
-    grid-template-columns:1fr;
+    grid-template-columns:repeat(2,1fr);
+    gap:7px;
   }
 
-  .checkbox-list{grid-template-columns:1fr;}
+  .choice span{
+    min-height:38px;
+    padding:7px 8px;
+    font-size:12.5px;
+    border-radius:12px;
+  }
+
+  .checkbox-list{grid-template-columns:1fr;gap:7px;}
+
+  .checkbox-item span{
+    min-height:42px;
+    padding:9px 10px;
+    font-size:12.5px;
+    border-radius:12px;
+  }
+
+  input,select,textarea{
+    padding:11px 12px;
+    font-size:15px;
+    border-radius:12px;
+  }
+
+  .field{gap:5px;}
+
+  .legend,label{
+    font-size:13.5px;
+  }
+
+  .hint{
+    font-size:12px;
+  }
+
+  .notice,
+  .rule-box,
+  .ag-box,
+  .partner-box,
+  .pre-submit{
+    border-radius:16px;
+    padding:14px;
+    font-size:13.5px;
+  }
+
+  .ag-icon{
+    width:42px;
+    height:42px;
+    border-radius:14px;
+    font-size:22px;
+  }
+
+  .ag-box h2{font-size:19px;}
 
   .actions{
     flex-direction:column;
     align-items:stretch;
   }
 
-  button{width:100%;}
+  button{
+    width:100%;
+    padding:14px 20px;
+  }
 }
 </style>
 </head>
@@ -494,8 +566,8 @@ button:disabled{opacity:.6;cursor:not-allowed;transform:none;}
           </div>
 
           <div class="rule-box">
-            ✅ Merci de remplir <strong>un formulaire par personne</strong> : joueur, parent, coach, bénévole ou membre du club.
-            Cela nous permet d’avoir une vision claire de chaque réponse.
+            ✅ Merci de remplir <strong>un formulaire par personne</strong>.
+            Si vous remplissez pour votre enfant licencié, cochez “Joueur licencié” et indiquez son nom, prénom et sa date de naissance.
           </div>
 
           <div class="ag-box">
@@ -516,12 +588,14 @@ button:disabled{opacity:.6;cursor:not-allowed;transform:none;}
           <div class="form-grid">
 
             <div class="field full">
-              <div class="legend">Je remplis ce formulaire en tant que… <span class="required">*</span></div>
-              <div class="hint">Un formulaire par personne : joueur, parent, coach, bénévole ou membre du club.</div>
+              <div class="legend">Je remplis ce formulaire pour… <span class="required">*</span></div>
+              <div class="hint">
+                Un formulaire par personne : joueur licencié, parent, bénévole, coach / encadrant ou autre membre du club.
+              </div>
               <div class="choice-grid five">
                 <label class="choice">
-                  <input type="radio" name="profil" value="Joueur / licencié" required>
-                  <span>Joueur / licencié</span>
+                  <input type="radio" name="profil" value="Joueur licencié" required>
+                  <span>Joueur licencié</span>
                 </label>
                 <label class="choice">
                   <input type="radio" name="profil" value="Parent">
@@ -537,7 +611,7 @@ button:disabled{opacity:.6;cursor:not-allowed;transform:none;}
                 </label>
                 <label class="choice">
                   <input type="radio" name="profil" value="Autre membre du club">
-                  <span>Autre membre du club</span>
+                  <span>Autre membre</span>
                 </label>
               </div>
             </div>
@@ -550,6 +624,11 @@ button:disabled{opacity:.6;cursor:not-allowed;transform:none;}
             <div class="field">
               <label for="joueur">Nom et prénom de la personne concernée <span class="required">*</span></label>
               <input id="joueur" name="joueur" type="text" required placeholder="Nom Prénom">
+            </div>
+
+            <div class="field">
+              <label for="dateNaissance">Date de naissance</label>
+              <input id="dateNaissance" name="dateNaissance" type="date">
             </div>
 
             <div class="field full">
@@ -595,8 +674,8 @@ button:disabled{opacity:.6;cursor:not-allowed;transform:none;}
             <div class="field full">
               <div class="legend">Type de participation souhaitée <span class="required">*</span></div>
               <div class="choice-grid">
-                <label class="choice"><input type="radio" name="pratique" value="Compétition : participation régulière aux matchs" required><span>Compétition<br>participation régulière aux matchs</span></label>
-                <label class="choice"><input type="radio" name="pratique" value="Présence moins régulière : matchs selon disponibilités" required><span>Présence moins régulière<br>matchs selon disponibilités</span></label>
+                <label class="choice"><input type="radio" name="pratique" value="Compétition : participation régulière aux matchs" required><span>Compétition<br>matchs réguliers</span></label>
+                <label class="choice"><input type="radio" name="pratique" value="Présence moins régulière : matchs selon disponibilités" required><span>Présence moins régulière<br>selon disponibilités</span></label>
                 <label class="choice"><input type="radio" name="pratique" value="Bénévolat / aide au club" required><span>Bénévolat<br>aide au club</span></label>
               </div>
             </div>
@@ -605,7 +684,7 @@ button:disabled{opacity:.6;cursor:not-allowed;transform:none;}
               <div class="legend">Seriez-vous prêt(e) à participer à la vie du club ?</div>
               <div class="hint">Plusieurs choix possibles.</div>
               <div class="checkbox-list">
-                <label class="checkbox-item"><input type="checkbox" name="participation" value="Parent référent"><span>Parent référent : maillots, rappels des horaires, lieux de match et communication avec l’équipe</span></label>
+                <label class="checkbox-item"><input type="checkbox" name="participation" value="Parent référent"><span>Parent référent : maillots, horaires, lieux de match, communication équipe</span></label>
                 <label class="checkbox-item"><input type="checkbox" name="participation" value="Entraîner / aider à l'entraînement"><span>Entraîner ou aider sur les entraînements</span></label>
                 <label class="checkbox-item"><input type="checkbox" name="participation" value="Coacher / accompagner le week-end"><span>Coacher ou accompagner une équipe le week-end</span></label>
                 <label class="checkbox-item"><input type="checkbox" name="participation" value="Table de marque"><span>Table de marque</span></label>
@@ -669,6 +748,8 @@ button:disabled{opacity:.6;cursor:not-allowed;transform:none;}
 </div>
 
 <script>
+const SCRIPT_URL = "TON_URL_APPS_SCRIPT_ICI";
+
 const form = document.getElementById("reinscriptionForm");
 const submitBtn = document.getElementById("submitBtn");
 const formSection = document.getElementById("formSection");
@@ -676,7 +757,7 @@ const successMessage = document.getElementById("successMessage");
 const errorMessage = document.getElementById("errorMessage");
 const formShell = document.getElementById("formShell");
 
-form.addEventListener("submit", function(event){
+form.addEventListener("submit", async function(event){
   event.preventDefault();
 
   errorMessage.classList.remove("visible");
@@ -694,6 +775,7 @@ form.addEventListener("submit", function(event){
     profil: data.get("profil") || "",
     email: data.get("email") || "",
     joueur: data.get("joueur") || "",
+    dateNaissance: data.get("dateNaissance") || "",
     sexe: data.get("sexe") || "",
     categorie: data.get("categorie") || "",
     decision: data.get("decision") || "",
@@ -703,28 +785,25 @@ form.addEventListener("submit", function(event){
     remarque: data.get("remarque") || ""
   };
 
-  if (typeof google !== "undefined" && google.script && google.script.run) {
-    google.script.run
-      .withSuccessHandler(function(){
-        formSection.style.display = "none";
-        successMessage.classList.add("visible");
-        formShell.scrollIntoView({behavior:"smooth", block:"start"});
-      })
-      .withFailureHandler(function(error){
-        console.error(error);
-        errorMessage.classList.add("visible");
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Envoyer ma réponse";
-      })
-      .saveReinscription2026_2027(payload);
-  } else {
-    console.log("Mode test local — données prêtes à envoyer :", payload);
+  try{
+    await fetch(SCRIPT_URL, {
+      method:"POST",
+      mode:"no-cors",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify(payload)
+    });
 
-    setTimeout(function(){
-      formSection.style.display = "none";
-      successMessage.classList.add("visible");
-      formShell.scrollIntoView({behavior:"smooth", block:"start"});
-    }, 500);
+    formSection.style.display = "none";
+    successMessage.classList.add("visible");
+    formShell.scrollIntoView({behavior:"smooth", block:"start"});
+
+  }catch(error){
+    console.error(error);
+    errorMessage.classList.add("visible");
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Envoyer ma réponse";
   }
 });
 </script>
